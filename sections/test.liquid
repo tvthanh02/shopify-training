@@ -1,0 +1,29 @@
+{% schema %}
+{
+  "name": "Simple Section ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading-2",
+      "label": "Heading",
+      "default": "Welcome to our store!"
+    },
+    {
+      "type": "textarea",
+      "id": "description-2",
+      "label": "Description",
+      "default": "Here is a short description of our store."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple Section 2"}
+      
+  ]
+}
+{% endschema %}
+
+<div class="simple-section">
+  <h2>{{ section.settings.heading-2 }}</h2>
+  <p>{{ section.settings.description-2 }}</p>
+</div>

@@ -1,0 +1,115 @@
+{% style %}
+  p,
+  ul,
+  li {
+    padding: 0;
+    margin: 0
+  }
+  .price-card {
+    width: 274px;
+    height: fit-content;
+    padding: 24px 32px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .price-card__info {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .price-card__price {
+    font-size: 32px;
+    color: #2D2E2E;
+    font-weight: 600;
+  }
+  .price-card__description {
+    font-size: 12px;
+    color: #ABABAB;
+    line-heigth: 14.52px;
+    font-weight: 400;
+  }
+  .price-card__trynow {
+    width: 100%;
+    height: 50px;
+  }
+  .price-card__features {
+    width: auto;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .price-card__feature-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  @media (max-width: 575.98px) {
+    .price-card {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .price-card {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .price-card {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {}
+
+
+@media (min-width: 1200px) {}
+{% endstyle %}
+
+
+<article class="price-card">
+  {% render "badge"
+    , title: badgeTitle
+    , backgroundColor: badgeBg
+    , textColor: badgeTextColor %}
+  <div class="price-card__info">
+    <p class="price-card__price">${{ price }}</p>
+    <p class="price-card__description">{{ description }}</p>
+    <div class="price-card__trynow">
+      {% render "button"
+        , title: buttonTitle
+        , backgroundColor: buttonBg
+        , color: buttonTextColor %}
+    </div>
+    <ul class="price-card__features">
+      <li style="price-card__feature-item">
+        {% render "feature-checklist-item"
+          , isSelected: featurePngTemplate
+          , name: "PNG templates" %}
+      </li>
+      <li>
+        {% render "feature-checklist-item"
+          , isSelected: featureFigmaComponent
+          , name: "Figma responsive
+                                                                                                                                                                                                                                                                                  components" %}
+      </li>
+      <li>
+        {% render "feature-checklist-item"
+          , isSelected: featureConstantUpdate
+          , name: "Constant updates" %}
+      </li>
+    </ul>
+  </div>
+</article>

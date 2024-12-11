@@ -1,0 +1,198 @@
+{% style %}
+  .price {
+    width: 100%;
+    background-color: #EFF6F3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    gap: 24px;
+    padding: 30px 0;
+  }
+
+
+  @media (max-width: 575.98px) {
+    .container {
+      padding: 30px 16px;
+      flex-direction: column;
+    }
+  }
+
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+      display: grid;
+      padding: 30px 32px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+      display: grid;
+      padding: 30px 32px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+
+  @media (min-width: 1200px) {
+    .container {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+
+{% endstyle %}
+
+
+{% schema %}
+  {
+    "name": "Price",
+    "blocks": [
+      {
+        "type": "price-card",
+        "name": "PriceCard",
+        "settings": [
+          {
+            "type": "number",
+            "id": "card-price",
+            "label": "Price"
+          },
+          {
+            "type": "textarea",
+            "id": "card-description",
+            "label": "Description"
+          },
+          {
+            "type": "text",
+            "id": "card-badge-title",
+            "label": "Badge Title"
+          },
+          {
+            "type": "color",
+            "id": "card-badge-bg",
+            "label": "Badge Background"
+          }, {
+            "type": "color",
+            "id": "card-badge-text-color",
+            "label": "Badge Text Color"
+          }, {
+            "type": "text",
+            "id": "card-button-title",
+            "label": "Button Title"
+          }, {
+            "type": "color",
+            "id": "card-button-bg",
+            "label": "Button Background"
+          }, {
+            "type": "color",
+            "id": "card-button-text-color",
+            "label": "Button Text Color"
+          }, {
+            "type": "checkbox",
+            "id": "feature-png-templates",
+            "label": "PNG templates",
+            "default": true
+          }, {
+            "type": "checkbox",
+            "id": "feature-figma-components",
+            "label": "Figma responsive components",
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "feature-constant-updates",
+            "label": "Constant updates",
+            "default": false
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Price",
+        "blocks": [
+          {
+            "type": "price-card",
+            "settings": {
+              "card-price": 0,
+              "card-description": "It is a long established fact that a reader will be distracted.",
+              "card-badge-title": "FREE",
+              "card-badge-bg": "#F8D254",
+              "card-badge-text-color": "#2D2E2E",
+              "card-button-title": "Try now",
+              "card-button-bg": "#3A4F39",
+              "card-button-text-color": "#ffffff",
+              "feature-png-templates": false,
+              "feature-figma-components": false,
+              "feature-constant-updates": false
+            }
+          }, {
+            "type": "price-card",
+            "settings": {
+              "card-price": 0,
+              "card-description": "It is a long established fact that a reader will be distracted.",
+              "card-badge-title": "FREE",
+              "card-badge-bg": "#F8D254",
+              "card-badge-text-color": "#2D2E2E",
+              "card-button-title": "Try now",
+              "card-button-bg": "#3A4F39",
+              "card-button-text-color": "#ffffff",
+              "feature-png-templates": false,
+              "feature-figma-components": false,
+              "feature-constant-updates": false
+            }
+          }, {
+            "type": "price-card",
+            "settings": {
+              "card-price": 0,
+              "card-description": "It is a long established fact that a reader will be distracted.",
+              "card-badge-title": "FREE",
+              "card-badge-bg": "#F8D254",
+              "card-badge-text-color": "#2D2E2E",
+              "card-button-title": "Try now",
+              "card-button-bg": "#3A4F39",
+              "card-button-text-color": "#ffffff",
+              "feature-png-templates": false,
+              "feature-figma-components": false,
+              "feature-constant-updates": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+<section id="shopify-section-{{ section.id  }}" class="price">
+  <div class="container">
+    {% for card in section.blocks %}
+      {% render "price-card"
+        , price: card.settings.card-price
+        , description: card.settings.card-description
+        , badgeTitle: card.settings.card-badge-title
+        , badgeBg: card.settings.card-badge-bg
+        , badgeTextColor: card.settings.card-badge-text-color
+        , buttonTitle: card.settings.card-button-title
+        , buttonBg: card.settings.card-button-bg
+        , buttonTextColor: card.settings.card-button-text-color
+        , featurePngTemplate: card.settings.feature-png-templates
+        , featureFigmaComponent: card.settings.feature-figma-components
+        , featureConstantUpdate: card.settings.feature-constant-updates %}
+    {% endfor %}
+  </div>
+</section>

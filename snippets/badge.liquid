@@ -1,0 +1,16 @@
+{% style %}
+  .badge {
+    width: fit-content;
+    height: fit-content;
+    padding: 4px 14px;
+    border-radius: 18px;
+    font-size: 16px;
+    text-decoration: uppercase;
+    font-weight: 600;
+  }
+{% endstyle %}
+
+
+<div style="background: {{ backgroundColor }}; color: {{ textColor }};" class="badge">
+  {{ title }}
+</div>
