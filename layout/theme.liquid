@@ -43,7 +43,8 @@
     <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
-    <script src="assets/tailwindcss.js" defer="defer"></script>
+    {% comment %} <script src="assets/tailwindcss.js" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'accordion.js' | asset_url }}" defer></script>
 
 
     {%- if settings.animations_reveal_on_scroll -%}

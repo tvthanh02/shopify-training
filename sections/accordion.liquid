@@ -1,0 +1,24 @@
+{% schema %}
+  {
+    "name": "Accordion",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title of Accordion"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Accordion",
+        "settings": {
+          "title": "Accordion"
+        }
+      }
+    ]
+  }
+{% endschema %}
+
+{{ 'accordion.css' | asset_url | stylesheet_tag }}
+
+<accordion-custom class="accordion" title="{{ section.settings.title }}"></accordion-custom>
