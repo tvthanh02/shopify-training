@@ -7,9 +7,10 @@ class AccordionItem extends HTMLElement {
     const accordionItemTrigger = this.querySelector(".accordion__item-trigger");
 
     accordionItemTrigger &&
-      accordionItemTrigger.addEventListener("click", (e) => {
-        this.expandAccordionItem.bind(e.target.parentElement)();
-      });
+      accordionItemTrigger.addEventListener(
+        "click",
+        this.expandAccordionItem.bind(this)
+      );
   }
 
   expandAccordionItem() {
