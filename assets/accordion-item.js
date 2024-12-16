@@ -8,30 +8,26 @@ class AccordionItem extends HTMLElement {
 
     accordionItemTrigger &&
       accordionItemTrigger.addEventListener("click", (e) => {
-        this.expandAccordionItem(e.target.parentElement);
+        this.expandAccordionItem.bind(e.target.parentElement)();
       });
   }
 
-  expandAccordionItem(selectedItem) {
+  expandAccordionItem() {
     const accordionItems =
       this.parentElement.querySelectorAll(".accordion__item");
 
-    accordionItems.forEach((item) => {
-      if (item !== selectedItem) {
-        item.querySelector(".angle-down")?.classList.remove("expanded");
-        item
-          .querySelector(".accordion__item-content")
-          ?.classList.remove("expanded");
-      }
-    });
-
-    const iconAngleDownEle = selectedItem.querySelector(".angle-down");
-    const accordionContentEle = selectedItem.querySelector(
+    const isExpandedContent = this.querySelector(
       ".accordion__item-content"
-    );
+    )?.classList.contains("expanded");
 
-    iconAngleDownEle?.classList.toggle("expanded");
-    accordionContentEle?.classList.toggle("expanded");
+    accordionItems.forEach((item) => {
+      item
+        .querySelector(".angle-down")
+        ?.classList.toggle("expanded", item === this && !isExpandedContent);
+      item
+        .querySelector(".accordion__item-content")
+        ?.classList.toggle("expanded", item === this && !isExpandedContent);
+    });
   }
 }
 

@@ -53,6 +53,10 @@
 
 {{ 'accordion.css' | asset_url | stylesheet_tag }}
 
+{% if additional_checkout_buttons %}
+  {{ content_for_additional_checkout_buttons }}
+{% endif %}
+
 <section class="accordion">
   <h1 class="accordion__heading">{{ section.settings.title }}</h1>
   <div class="accordion__content">
