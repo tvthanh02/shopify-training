@@ -1,0 +1,69 @@
+{% schema %}
+  {
+    "name": "Accordion",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title of Accordion"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "accordion-item",
+        "name": "AccordionItem",
+        "settings": [
+          {
+            "type": "text",
+            "id": "subject",
+            "label": "Subject of Accordion Item"
+          }, {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content of Accordion Item"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Accordion",
+        "settings": {
+          "title": "Accordion"
+        },
+        "blocks": [
+          {
+            "type": "accordion-item",
+            "settings": {
+              "subject": "This is subject",
+              "content": "This is content"
+            }
+          }, {
+            "type": "accordion-item",
+            "settings": {
+              "subject": "Are you ready?",
+              "content": "Nooooo"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{{ 'accordion.css' | asset_url | stylesheet_tag }}
+
+{% if additional_checkout_buttons %}
+  {{ content_for_additional_checkout_buttons }}
+{% endif %}
+
+<section class="accordion">
+  <h1 class="accordion__heading">{{ section.settings.title }}</h1>
+  <div class="accordion__content">
+    {% for block in section.blocks %}
+      {% render "accordion-item"
+        , subject: block.settings.subject
+        , content: block.settings.content %}
+    {% endfor %}
+  </div>
+</section>
