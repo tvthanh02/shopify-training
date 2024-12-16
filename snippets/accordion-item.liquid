@@ -1,7 +1,7 @@
 {{ 'accordion.css' | asset_url | stylesheet_tag }}
 
-<accordion-item class="accordion__item">
-  <div class="accordion__item-trigger">
+<details is="accordion-item" class="accordion__item">
+  <summary class="accordion__item-trigger">
     <p class="accordion__item-trigger-subject">{{ subject }}</p>
     <div class="angle-down">
       <svg
@@ -12,6 +12,6 @@
         <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
       </svg>
     </div>
-  </div>
+  </summary>
   <div class="accordion__item-content">{{ content }}</div>
-</accordion-item>
+</details>
